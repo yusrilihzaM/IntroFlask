@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
 app = Flask(__name__)
 app.debug = True
 
@@ -23,5 +23,12 @@ def show_blog(blog_id):
 @app.route("/login",methods=['GET','POST'])
 def show_login():
     if request.method=='POST':
-        return "Email Kamu "+ request.form['email']
+        resp=make_response("Email Kamu "+ request.form['email'])
+        resp.set_cookie('email_user',request.form['email'])
+        return resp
     return render_template('login.html')
+
+@app.route("/getcookie")
+def getCookie():
+    email=request.cookies.get('email_user')
+    return "email yang disimpan di cookie adalah "+email
