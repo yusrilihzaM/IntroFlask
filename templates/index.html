@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Ini html rendering</h1>
+    {%if not search%}
+    <h2>halaman index biasa</h2>
+    {%else%}
+    <h2>halaman search biasa {{search}}</h2>
+    {%endif%}
+</body>
+
+</html>
